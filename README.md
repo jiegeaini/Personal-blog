@@ -9,6 +9,10 @@
 （5）sweetalert2
 （6）jquery.nicescroll
 后台java框架：
-spring
-springMVC
-mybatis
+（1）spring
+（2）springMVC
+（3）mybatis
+
+后台模板：
+Author: telatkaya_
+Author URL: http://www.themeforest.net/user/telatkaya_

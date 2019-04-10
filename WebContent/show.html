@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>web开发学习回顾</title>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+<link href="semantic/dist/semantic.min.css" rel="stylesheet" />
+<link href="css/sweetalert2.min.css" rel="stylesheet" />
+<style type="text/css">
+#contextWrap {
+	padding-top: 50px;
+	display: none;
+}
+
+@media only screen and (max-width: 700px) {
+	.ui.inverted.menu .item {
+		display: none;
+	}
+	.ui.inverted.menu .mobileShow {
+		display: block;
+	}
+	.ui.inverted.menu .mshow {
+		display: block;
+	}
+	.ui.card, .ui.cards>.card {
+		width: 100%;
+	}
+}
+</style>
+</head>
+<body>
+	<div class="ui inverted  fixed menu">
+		<a class="yellow item mobileShow"><i
+			class="sidebar medium white icon"></i></a> <a href="index.html"
+			class=" red item active">web开发回顾</a> <a href="question.html"
+			class=" orange item">问题回顾</a> <a href="experience.html"
+			class=" yellow item">经验回顾</a> <a href="comment.html"
+			class=" blue item">留言</a> <a href="download.html"
+			class=" pink item ">项目下载</a>
+	</div>
+
+	<div id="contextWrap">
+		<div class="ui equal width left aligned padded grid stackable">
+			<div class="row">
+				<div class="column">
+					<div id="content_body" class="ui five column stackable grid">
+
+						<div v-for="c in content" class="column showpage_url">
+							<span style="display: none">{{c.url}}</span>
+							<div class="ui link card segments">
+								<div class="ui segment">
+									<h5 class="ui header">{{c.name}}</h5>
+								</div>
+								<div class="ui segment">
+									<img :src="c.cimg" class="ui fluid image">
+								</div>
+							</div>
+						</div>
+
+					</div>
+				</div>
+			</div>
+		</div>
+
+	</div>
+
+	<div class="ui left demo vertical inverted sidebar labeled icon menu">
+		<a href="index.html" class="item"> <i class="home icon"></i>
+			web开发回顾
+		</a> <a href="question.html" class="item"> <i
+			class="question circle icon"></i> 问题回顾
+		</a> <a href="experience.html" class="item"> <i class="smile icon"></i>
+			经验回顾
+		</a> <a href="comment.html" class="item"> <i class="edit icon"></i> 留言
+		</a> <a href="download.html" class="item"> <i
+			class="arrow alternate circle down icon"></i> 项目下载
+		</a>
+	</div>
+
+	<div id="ascrail2001-hr" class="nicescroll-rails nicescroll-rails-hr"
+		style="height: 2px; z-index: 9999999; top: 403px; left: 0px; position: fixed; cursor: default; display: none; width: 188px; opacity: 0;">
+		<div class="nicescroll-cursors"
+			style="position: absolute; top: 0px; height: 2px; width: 190px; background-color: rgb(61, 59, 59); border: 0px; background-clip: padding-box; border-radius: 0px;"></div>
+	</div>
+
+
+	<div id="showpage" class="ui active dimmer">
+		<div class="ui large text loader">加载中</div>
+	</div>
+
+	<!--jquery-->
+	<script src="js/jquery-2.1.4.min.js"></script>
+	<!--jquery-->
+	<!--semantic-->
+	<script src="semantic/dist/semantic.min.js"></script>
+	<!--semantic-->
+	<script src="js/jquery.nicescroll.min.js"></script>
+	<script src="js/sweetalert2.min.js"></script>
+	<script src="js/vue.min.js"></script>
+	<script src="js/show.js?a=2"></script>
+	<script>
+   		var isMobile = window.matchMedia("only screen and (max-width: 768px)");
+
+if (isMobile.matches) {
+    resizeSidebar("1");
+    $("body")
+        .getNiceScroll()
+        .remove();
+    $(".sidebar")
+        .getNiceScroll()
+        .remove();
+
+    $(".computer.only").toggleClass("displaynone");
+    $(".colhidden").toggleClass("displaynone");
+} else {
+    $("body").niceScroll({
+        cursorcolor: "#3d3b3b",
+        cursorwidth: 5,
+        cursorborderradius: 0,
+        cursorborder: 0,
+        scrollspeed: 50,
+        autohidemode: true,
+        zindex: 9999999
+    });
+    $(".sidebar").niceScroll({
+        cursorcolor: "#3d3b3b",
+        cursorwidth: 2,
+        cursorborderradius: 0,
+        cursorborder: 0,
+        scrollspeed: 50,
+        autohidemode: true,
+        zindex: 9999999
+    });
+
+    $(".displaynone .menu").niceScroll({
+        cursorcolor: "#3d3b3b",
+        cursorwidth: 5,
+        cursorborderradius: 0,
+        cursorborder: 0,
+        scrollspeed: 50,
+        autohidemode: true,
+        zindex: 9999999
+    });
+}
+$(".ui.inverted.menu .mobileShow").click(function(){
+	$('.ui.sidebar').sidebar('toggle');
+})
+
+   	</script>
+</body>
+</html>

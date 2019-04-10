@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+	<mapper namespace="com.wxdemo.mapper.CommentMapper">
+
+		<select id="getAll" resultType="com.wxdemo.pojo.Comment">
+			select * from comment ORDER BY id DESC 
+			<if test="start!=null and count!=null">
+                    limit #{start},#{count}
+            </if>
+            
+		</select>
+
+		 <select id="total" resultType="int">
+	        select count(*) from   comment      
+	    </select>	
+	    
+	    <insert id="addComment">
+	    	insert into comment 
+	    	(name,content,time) 
+	    	values (#{name},#{content},#{time})
+	    </insert> 
+	    
+	    <select id="getAll_all" resultType="com.wxdemo.pojo.Comment">
+	    	select * from comment
+	    </select> 
+	    
+	    <delete id="deleteComment">
+	    	delete from comment 
+	    	<where>
+	    		id = #{id}
+	    	</where>
+	    </delete>  	    
+	</mapper>
+

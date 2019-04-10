@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+	<mapper namespace="com.wxdemo.mapper.MessageMapper">
+		<select id="getAll" resultType="com.wxdemo.pojo.Message">
+			select * from message
+		</select> 
+		<select id="getMessage" resultType="com.wxdemo.pojo.Message">
+			select * from message 
+			<where>
+            <if test="id!=null">
+                and id = #{id}
+            </if>        
+        </where> 
+		</select>
+		<insert id="addMessage">
+			insert into message 
+			(title,text) 
+			values (#{title},#{text})
+		</insert>
+		<update id="updateMessage">
+			update message set title = #{title},
+			text = #{text} 
+			<where>
+				id = #{id}
+			</where>
+		</update>
+		<delete id="deleteMessage">
+			delete from message 
+			<where>
+				id = #{id}
+			</where>
+		</delete>		    
+	</mapper>
+

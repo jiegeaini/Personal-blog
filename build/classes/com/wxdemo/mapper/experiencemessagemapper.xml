@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+	<mapper namespace="com.wxdemo.mapper.ExperienceMessageMapper">
+		<select id="getAll" resultType="com.wxdemo.pojo.ExperienceMessage">
+			select * from experiencemessage
+		</select> 
+		<select id="getExperienceMessage" resultType="com.wxdemo.pojo.ExperienceMessage">
+			select * from experiencemessage 
+			<where>
+            <if test="id!=null">
+                and id = #{id}
+            </if>        
+        </where> 
+		</select>
+		<insert id="addExperienceMessage">
+			insert into experiencemessage 
+			(title,text) 
+			values (#{title},#{text})
+		</insert>
+		<update id="updateExperienceMessage">
+			update experiencemessage set title = #{title},
+			text = #{text} 
+			<where>
+				id = #{id}
+			</where>
+		</update>
+		<delete id="deleteExperienceMessage">
+			delete from experiencemessage 
+			<where>
+				id = #{id}
+			</where>
+		</delete>	    
+	</mapper>
+
